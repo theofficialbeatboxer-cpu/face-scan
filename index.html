@@ -5,21 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Face Scan Attendance System</title>
   <link rel="stylesheet" href="styles.css" />
-  <script src="https://unpkg.com/face-api.js@0.22.2/dist/face-api.min.js"></script>
+  <!-- Load face-api.js from CDN -->
+  <script defer src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
   <script defer src="app.js"></script>
 </head>
-
-
 <body>
   <h1>Face Scan Attendance System</h1>
-  <video id="video" width="640" height="480" autoplay muted></video>
-  <canvas id="canvas"></canvas>
-  <button id="markBtn">Mark Attendance</button>
-  <div id="attendanceLog">
-    <h2>Attendance Log</h2>
-    <ul id="attendanceList"></ul>
-  </div>
+  <video id="video" width="600" height="450" autoplay muted></video>
+  <br />
+  <button id="markAttendance">Mark Attendance</button>
+  <div id="attendanceLog"><h2>Attendance Log</h2></div>
 </body>
 </html>
-
-
