@@ -1,4 +1,3 @@
-// Elements
 const video = document.getElementById('video');
 const attendanceList = document.getElementById('attendanceList');
 const markBtn = document.getElementById('markBtn');
@@ -6,7 +5,6 @@ const markBtn = document.getElementById('markBtn');
 let knownFaces = [];
 let knownNames = [];
 
-// Load face-api.js models
 async function loadModels() {
   if (typeof faceapi === 'undefined') {
     alert("face-api.js failed to load.");
@@ -18,7 +16,6 @@ async function loadModels() {
   await faceapi.nets.faceRecognitionNet.loadFromUri('https://unpkg.com/face-api.js@0.22.2/weights');
 }
 
-// Start webcam video stream
 async function startVideo() {
   try {
     console.log("Requesting camera access...");
@@ -31,7 +28,6 @@ async function startVideo() {
   }
 }
 
-// Save attendance to localStorage
 function saveAttendanceLog() {
   const items = [];
   attendanceList.querySelectorAll('li').forEach(li => {
@@ -40,7 +36,6 @@ function saveAttendanceLog() {
   localStorage.setItem('attendanceLog', JSON.stringify(items));
 }
 
-// Load attendance from localStorage
 function loadAttendanceLog() {
   const items = JSON.parse(localStorage.getItem('attendanceLog')) || [];
   attendanceList.innerHTML = '';
@@ -51,7 +46,6 @@ function loadAttendanceLog() {
   });
 }
 
-// Register new face
 async function registerFace() {
   const name = prompt("Enter name for face registration:");
   if (!name) return;
@@ -69,7 +63,6 @@ async function registerFace() {
   }
 }
 
-// Mark attendance
 async function markAttendance() {
   const detection = await faceapi.detectSingleFace(video)
     .withFaceLandmarks()
@@ -109,7 +102,6 @@ async function markAttendance() {
   }
 }
 
-// App initialization
 async function init() {
   console.log("App loaded");
   await loadModels();
@@ -118,6 +110,5 @@ async function init() {
   loadAttendanceLog();
 }
 
-// Start app
 markBtn.addEventListener('click', markAttendance);
 init();
